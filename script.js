@@ -18,6 +18,8 @@ let increase = 1;
 let auto = 0;
 let trade = 0;
 
+// auto click every 5 secs
+setInterval(function() { monies.clicks += auto }, 5000)
 
 clicker.addEventListener("mousedown", function() {
 	monies.clicks += increase;
@@ -26,7 +28,7 @@ clicker.addEventListener("mousedown", function() {
 class Upgrade {
 	constructor(type, qty) {
 		this.type = ["click","auto","trade"][type];
-		this.qty = this.type!="trade" ? this.qty : 1;
+		this.qty = (this.type!="trade") ? this.qty : 1;
 	}
 	update() {
 		switch (this.type) {
@@ -42,7 +44,7 @@ class Upgrade {
 		}
 	}
 	display() {
-		return `+${this.qty} ${this.type}${this.type=="trade" ? "progress" : ""}`;
+		return `+${this.qty} ${this.type}${(this.type=="trade") ? "progress" : ""}`;
 	}
 }
 }
